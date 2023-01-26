@@ -3,8 +3,13 @@
   # Defines the root path route ("/")
   # root "articles#index"
 Rails.application.routes.draw do
-  get "about", to: "about#index"
+  
+  # GET /about (Respond to GET request) 
+  # Points to controller for about
+  get "about-us", to: "about#index", as: :about #Changing the url but leave the name the same
 
-  # root to: "main#index"
-  get "/", to: "main#index"
+  # root to main page
+  # custom helper : 
+  root to: "main#index"
+  #get "/", to: "main#index"
 end
