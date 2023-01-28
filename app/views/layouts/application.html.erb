@@ -1,3 +1,4 @@
+<!-- https://getbootstrap.com/docs/5.3/getting-started/introduction/ frontend toolkit-->
 <!DOCTYPE html>
 <html>
   <head>
@@ -19,6 +20,7 @@
     <%= render partial: "shared/navbar" %> <!-- Rendering another view instead of pasting everything here. Partial means it is not a full template just a portion of the page will be rendered-->
 
     <div class="container">
+      <%= render partial: "shared/flash"%>
       <%= yield %>
     </div>
   </body>
