@@ -3,21 +3,36 @@
 <!-- Generates a form through rails using a form_with helper -->
 <%= form_with model: @user, url: sign_up_path do |form| %>
     <!--Prints out the form -->
+    
+    <% if @user.errors.any? %>
+        <div class="alert alert-danger">
+            <% @user.errors.full_messages.each do |message| %>
+                <div><%= message %></div>
+            <%end%>
+        </div>
+    <%end%>
+
     <div class="mb-3">
         <%= form.label :email %>
         <%= form.text_field :email, class: "form-control", placeholder: "johndoe@email.com" %>
     </div>
+
     <div class="mb-3">
         <%= form.label :password %>
         <%= form.password_field :password, class: "form-control", placeholder: "password"%>
     </div>
+
     <div class="mb-3">
         <%= form.label :password_confirmation %>
         <%= form.password_field :password_confirmation, class: "form-control", placeholder: "password"  %>
     </div>
 
-    <div class="mb-3">
-        <%= form.submit "Sign Up", class: "btn btn-primary" %>
+    <!-- Need to turn off turbo in order to process controller as HTML-->
+    <div data-turbo="false"> 
+        <div class="mb-3">
+            <%= form.submit "Sign Up", class: "btn btn-primary" %>
+        </div>    
     </div>
+    
 
 <%end%>
