@@ -1,0 +1,17 @@
+<h1>Forgot Password</h1>
+
+<%= form_with url: password_reset_path do |form| %>
+    
+    <div class="mb-3">
+        <%= form.label :email %> <!-- style: "color: red" -->
+        <%= form.text_field :email, class: "form-control", placeholder: "johndoe@email.com" %>
+    </div>
+
+    <!-- Need to turn off turbo in order to process controller as HTML-->
+    <div data-turbo="false"> 
+        <div class="mb-3">
+            <%= form.submit "Reset Password", class: "btn btn-primary" %>
+        </div>    
+    </div>
+
+<%end%>

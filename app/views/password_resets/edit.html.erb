@@ -1,8 +1,6 @@
-<h1>Sign Up</h1>
+<h1>Reset Password</h1>
 
-<!-- Generates a form through rails using a form_with helper -->
-<%= form_with model: Current.user, url: sign_up_path do |form| %>
-    <!--Prints out the form -->
+<%= form_with model: @user, url: password_reset_edit_path(token: params[:token]) do |form| %>
     
     <% if form.object.errors.any? %>
         <div class="alert alert-danger">
@@ -11,11 +9,6 @@
             <%end%>
         </div>
     <%end%>
-
-    <div class="mb-3">
-        <%= form.label :email %> <!-- style: "color: red" -->
-        <%= form.text_field :email, class: "form-control", placeholder: "johndoe@email.com" %>
-    </div>
 
     <div class="mb-3">
         <%= form.label :password %>
@@ -30,9 +23,8 @@
     <!-- Need to turn off turbo in order to process controller as HTML-->
     <div data-turbo="false"> 
         <div class="mb-3">
-            <%= form.submit "Sign Up", class: "btn btn-primary" %>
+            <%= form.submit "Reset Password", class: "btn btn-primary" %>
         </div>    
     </div>
-    
 
 <%end%>
