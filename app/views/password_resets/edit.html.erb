@@ -1,5 +1,7 @@
 <h1>Reset Password</h1>
 
+<!-- Need the model in order for objects.errors to work. for.object references to the object form_with model and that is required to render out errors because they are kept
+inside of the model record the instance of that record-->
 <%= form_with model: @user, url: password_reset_edit_path(token: params[:token]) do |form| %>
     
     <% if form.object.errors.any? %>
